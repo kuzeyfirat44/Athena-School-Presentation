@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atina Okulu: Felsefenin Görsel Şöleni</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            margin: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            height: 100vh;
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .slide {
+            scroll-snap-align: start;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .slide.active .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        .delay-500 { transition-delay: 500ms; }
+
+        .nav-dots {
+            position: fixed;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            z-index: 50;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(251, 191, 36, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .dot:hover {
+            background-color: rgba(251, 191, 36, 0.7);
+        }
+
+        .dot.active {
+            background-color: #fbbf24;
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+
+        .dot::before {
+            content: attr(data-label);
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 23, 42, 0.9);
+            color: #fbbf24;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            border: 1px solid #fbbf24;
+        }
+
+        .dot:hover::before {
+            opacity: 1;
+        }
+
+        .art-frame {
+            border: 4px solid #334155;
+            border-radius: 8px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .art-frame img {
+            transition: transform 0.7s ease;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .art-frame:hover img {
+            transform: scale(1.03);
+        }
+        
+        .bg-overlay {
+            background: linear-gradient(to right, rgba(15,23,42,1) 0%, rgba(15,23,42,0.85) 50%, rgba(15,23,42,0.4) 100%);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-dots">
+        <a href="#intro" class="dot active" data-label="Giriş"></a>
+        <a href="#architecture" class="dot" data-label="Mimari ve Simgeler"></a>
+        <a href="#plato-aristotle" class="dot" data-label="Platon ve Aristoteles"></a>
+        <a href="#socrates" class="dot" data-label="Sokrates"></a>
+        <a href="#pythagoras" class="dot" data-label="Pisagor"></a>
+        <a href="#heraclitus-diogenes" class="dot" data-label="Herakleitos ve Diyojen"></a>
+        <a href="#euclid" class="dot" data-label="Öklid ve Arşimet"></a>
+        <a href="#astronomers" class="dot" data-label="Gökbilimciler ve Raffaello"></a>
+    </div>
+
+    <section id="intro" class="slide bg-slate-900">
+        <div class="absolute inset-0 z-0">
+            <!-- Full School of Athens Fresco -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg" 
+                 alt="Atina Okulu Tam Görünüm" class="w-full h-full object-cover opacity-20 object-center">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-slate-900"></div>
+        </div>
+        <div class="z-10 text-center max-w-5xl mx-auto px-4">
+            <p class="reveal text-amber-500 font-semibold tracking-widest uppercase mb-4">Raffaello Sanzio'nun Başyapıtı</p>
+            <h1 class="reveal delay-100 text-6xl md:text-8xl font-bold mb-6 text-white drop-shadow-lg">Atina Okulu</h1>
+            <h2 class="reveal delay-200 text-2xl md:text-4xl italic text-gray-400 font-light mb-10">Antik Düşüncenin Rönesans ile Buluşması</h2>
+            <div class="reveal delay-300 w-32 h-1 bg-amber-500 mx-auto my-8"></div>
+            <p class="reveal delay-400 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+                Vatikan'daki Stanza della Segnatura'da bulunan bu muazzam fresk, felsefeyi, bilimi ve insan aklının yüceliğini kutlar. Tüm büyük Yunan düşünürlerini aynı çatı altında toplayan bu eserin derinliklerine iniyoruz.
+            </p>
+            <div class="reveal delay-500 mt-16 animate-bounce">
+                <a href="#architecture" class="text-amber-500 hover:text-white transition-colors duration-300">
+                    <svg class="w-10 h-10 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="architecture" class="slide bg-slate-800">
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center w-full">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-amber-400">Mimari ve İlahi Gözlemciler</h2>
+                <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+                    <p>Tablonun arka planı sıradan bir dekor değildir. Raffaello'nun akıl hocası olan <strong class="text-white">Donato Bramante</strong>'nin tasarımından esinlenen devasa, tonozlu yapı, inşası yeni başlamış olan <span class="italic">yeni Aziz Petrus Bazilikası'nı</span> andırır.</p>
+                    <p>İhtişamlı kemerlerin iki yanında, felsefe okulunu izleyen iki önemli antik tanrı heykeli bulunur:</p>
+                    <ul class="list-disc pl-6 space-y-4">
+                        <li><strong class="text-amber-300">Apollon (Sol):</strong> Işığın, müziğin, şifanın ve aklın tanrısı. Rasyonel düşünceyi ve ilhamı simgeler. Elinde liriyle resmedilmiştir.</li>
+                        <li><strong class="text-amber-300">Athena (Sağ):</strong> Bilgelik, adalet ve stratejik savaş tanrıçası. Felsefenin ve entelektüel mücadelenin koruyucusudur. (Romalı adıyla Minerva).</li>
+                    </ul>
+                    <p class="text-sm text-gray-400 border-l-4 border-slate-600 pl-4 mt-4">Bu devasa klasik mimari, insan aklının ulaştığı yüksek seviyeyi ve evrensel düzeni yansıtır.</p>
+                </div>
+            </div>
+            <div class="reveal delay-200 art-frame">
+                <!-- Using full image cropped via CSS for architecture focus -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg" 
+                     alt="Mimari Detaylar" class="object-cover" style="height: 400px; object-position: top center;">
+            </div>
+        </div>
+    </section>
+
+    <section id="plato-aristotle" class="slide bg-slate-900 relative">
+        <div class="absolute inset-0 z-0">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Sanzio_01_Plato_Aristotle.jpg" 
+                 alt="Platon ve Aristoteles Arkaplan" class="w-full h-full object-cover opacity-10">
+            <div class="absolute inset-0 bg-overlay"></div>
+        </div>
+        <div class="z-10 max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center w-full">
+            <div class="lg:col-span-5 reveal art-frame order-2 lg:order-1">
+                <!-- Plato and Aristotle Close-up -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Sanzio_01_Plato_Aristotle.jpg" 
+                     alt="Platon ve Aristoteles Yakın Çekim" class="w-full h-auto">
+            </div>
+            <div class="lg:col-span-7 reveal delay-200 order-1 lg:order-2">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-amber-400">Merkezi Çatışma: İdealar ve Ampirizm</h2>
+                <p class="text-xl text-gray-300 mb-8 font-light">Tüm kompozisyonun odak noktasında, Batı felsefesinin iki kurucu babası, yürüyerek tartışırken resmedilmiştir.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-slate-800/80 p-6 rounded-lg border-t-4 border-red-500 shadow-xl">
+                        <h3 class="text-2xl font-bold text-white mb-2">Platon <span class="text-sm font-normal text-gray-400"> (Leonardo da Vinci)</span></h3>
+                        <p class="text-gray-300 mb-4 text-sm">Sol tarafta, çıplak ayaklı ve erguvan/kırmızı pelerinli.</p>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li><strong class="text-amber-300">Elindeki Kitap:</strong> <i>Timaeus</i> (Evrenin yaratılışını anlatır).</li>
+                            <li><strong class="text-amber-300">Vücut Dili:</strong> Sağ işaret parmağıyla gökyüzünü işaret eder.</li>
+                            <li><strong class="text-amber-300">Felsefesi:</strong> <i>İdealar Kuramı.</i> Gerçeklik bu dünyada değil, soyut, mükemmel ve ebedi olan zihinsel dünyadadır.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-slate-800/80 p-6 rounded-lg border-t-4 border-blue-500 shadow-xl">
+                        <h3 class="text-2xl font-bold text-white mb-2">Aristoteles <span class="text-sm font-normal text-gray-400"> (Genç ve Dinamik)</span></h3>
+                        <p class="text-gray-300 mb-4 text-sm">Sağ tarafta, kahverengi ve mavi cübbesiyle daha pratik giyimli.</p>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li><strong class="text-amber-300">Elindeki Kitap:</strong> <i>Nikomakhos'a Etik</i> (Ahlak ve pratik yaşam).</li>
+                            <li><strong class="text-amber-300">Vücut Dili:</strong> Sağ elini, avuç içi yere bakacak şekilde yere paralel uzatır.</li>
+                            <li><strong class="text-amber-300">Felsefesi:</strong> <i>Ampirizm (Deneycilik).</i> Bilgi, duyularımızla algıladığımız somut, fiziksel dünyanın gözlemlenmesiyle elde edilir.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="socrates" class="slide bg-slate-800">
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center w-full">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-amber-400">Sorgulayan Akıl: Sokrates</h2>
+                <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+                    <p>Tablonun sol üst köşesinde, karakteristik kalkık burnu ve zeytin yeşili cübbesiyle <strong class="text-white">Sokrates</strong>'i görürüz. Platon ve Aristoteles'in aksine, onun elinde bir kitap yoktur çünkü o hiçbir şey yazmamıştır; onun alanı sokaklar ve sözlü tartışmadır.</p>
+                    
+                    <div class="bg-slate-700/50 p-6 rounded-lg shadow-inner border border-slate-600">
+                        <h4 class="text-xl text-white font-semibold mb-3">Sokratik Yöntem (Maiotik)</h4>
+                        <p class="text-sm mb-4">Sokrates, parmaklarıyla sayarak karşısındakine argümanlarını sıralar. Bu onun ünlü diyalektik yöntemini, yani sürekli sorular sorarak karşısındakinin zihnindeki doğruyu doğurtma (ebelik) sanatını simgeler.</p>
+                        <p class="text-sm"><strong class="text-amber-300">Dinleyiciler:</strong> Karşısında, zırh giymiş yakışıklı ve hırslı politikacı <i>Alkibiades</i> ile dikkatle onu dinleyen <i>Ksenofon</i> (veya İskender) bulunur. Sokrates, gençleri "yozlaştırmakla" suçlanıp idama mahkum edilmesine neden olan o ünlü tartışmalarından birindedir.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal delay-200 art-frame">
+                <!-- Socrates Close-up -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Sanzio_01_Socrates.jpg" 
+                     alt="Sokrates ve Gençler" class="w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <section id="pythagoras" class="slide bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center w-full">
+            <div class="reveal art-frame order-2 lg:order-1">
+                <!-- Pythagoras Close-up -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Sanzio_01_Pythagoras.jpg" 
+                     alt="Pisagor" class="w-full h-auto">
+            </div>
+            <div class="reveal delay-200 order-1 lg:order-2">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-amber-400">Sayılardaki Uyum: Pisagor</h2>
+                <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+                    <p>Sol alt köşede, kalın bir kitaba harıl harıl notlar alan kel, yaşlı adam <strong class="text-white">Pisagor</strong>'dur. Etrafı öğrencilerle çevrilidir. O, evrenin temel yapı taşının madde değil, "matematik ve sayılar" olduğuna inanırdı.</p>
+                    
+                    <ul class="list-disc pl-6 space-y-4">
+                        <li><strong class="text-amber-300">Kara Tahta (Tetractys):</strong> Önünde tutulan küçük kara tahtada bir diyagram vardır. Bu, Pisagorcuların kutsal kabul ettiği, müzikal armonilerin oranlarını (oktav, beşli, dörtlü) ve 1+2+3+4=10 formülünü gösteren <i>Tetractys</i> şeklidir.</li>
+                        <li><strong class="text-amber-300">Evrensel Armoni:</strong> Raffaello, onu sol tarafa (Platon'un tarafına) yerleştirerek matematiğin soyut, idealar dünyasına ait ruhani bir uğraş olduğunu vurgular.</li>
+                        <li>Etrafındaki figürlerden birinin, İslam dünyasının büyük filozofu <strong class="text-white">İbn Rüşd (Averroes)</strong> olduğu düşünülür (sarıklı figür, saygıyla eğilip ona bakar).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="heraclitus-diogenes" class="slide bg-slate-800">
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-1 gap-12 items-center w-full">
+            <div class="reveal text-center max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-amber-400">Karamsarlık ve Kinik Reddediş</h2>
+                <p class="text-xl text-gray-300 mb-10">Tablonun orta alt kısmı, izole olmuş iki aykırı karaktere ev sahipliği yapar.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Heraclitus -->
+                <div class="reveal delay-100 flex flex-col items-center bg-slate-900/50 p-6 rounded-xl border border-slate-700 shadow-xl">
+                    <div class="art-frame w-full max-w-sm mb-6">
+                        <!-- Heraclitus Close-up -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Sanzio_01_Heraclitus.jpg" alt="Herakleitos">
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-4">Herakleitos <span class="text-sm font-normal text-gray-400">(Michelangelo)</span></h3>
+                    <p class="text-gray-300 text-center mb-4">Ağlayan (melankolik) filozof olarak bilinir. Ön planda, mermer bir bloğa dayanmış, kara kara düşünerek notlar alır.</p>
+                    <p class="text-amber-300 italic text-center mb-4">"Değişmeyen tek şey değişimin kendisidir."</p>
+                    <p class="text-sm text-gray-400 text-center">Bu figür, Raffaello'nun orijinal taslağında yoktur. Raffaello, Sistine Şapeli'ni boyayan Michelangelo'yu gizlice izlemiş, onun dehasına hayran kalmış ve saygı duruşu olarak onu kendi tarzıyla (düşünceli, huysuz, taş ustası botlarıyla) tabloya sonradan eklemiştir.</p>
+                </div>
+
+                <!-- Diogenes -->
+                <div class="reveal delay-300 flex flex-col items-center bg-slate-900/50 p-6 rounded-xl border border-slate-700 shadow-xl">
+                    <div class="art-frame w-full max-w-sm mb-6">
+                        <!-- Diogenes Close-up -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Sanzio_01_Diogenes.jpg" alt="Diyojen">
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-4">Diyojen (Diogenes)</h3>
+                    <p class="text-gray-300 text-center mb-4">Merkez basamaklara boylu boyunca, yarı çıplak ve umursamazca uzanmış figürdür. Yanında sadece ahşap bir kâse vardır.</p>
+                    <p class="text-amber-300 italic text-center mb-4">"Gölge etme, başka ihsan istemem."</p>
+                    <p class="text-sm text-gray-400 text-center">Kinik felsefenin temsilcisidir. Ona göre medeniyet, statü, mal ve mülk insanı yozlaştırır. Köpekler gibi doğaya uygun, basit ve kuralsız yaşamayı savunur. Etrafındaki entelektüel karmaşaya sırtını dönmüş, rahatça yatmaktadır.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="euclid" class="slide bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center w-full">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-amber-400">Ölçülebilir Gerçeklik: Geometri</h2>
+                <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+                    <p>Sağ alt köşede, Aristoteles'in (ampirizm ve somut dünya) tarafında, eğilmiş halde elindeki pergelle yere çizim yapan figür geometrinin babası <strong class="text-white">Öklid</strong> (bazı kaynaklara göre Arşimet) olarak kabul edilir.</p>
+                    
+                    <ul class="list-disc pl-6 space-y-4">
+                        <li><strong class="text-amber-300">Öğretmen ve Çıraklar:</strong> Etrafındaki genç öğrenciler, çizilen geometrik teorem karşısında farklı aydınlanma evrelerini (merak, anlama, idrak) yüz ifadeleriyle yansıtırlar.</li>
+                        <li><strong class="text-amber-300">Bramante'nin Yüzü:</strong> Raffaello, bu geometri dehasına dostu ve hamisi olan büyük Rönesans mimarı <i>Donato Bramante'nin</i> yüzünü vermiştir. Yakasına işlenmiş R.U.S.M. (Raffaello Urbinas Sua Manu - Urbino'lu Raffaello Kendi Eliyle) harfleri tablonun imzalarından biridir.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="reveal delay-200 art-frame">
+                <!-- Euclid Close-up -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Sanzio_01_Euclid.jpg" 
+                     alt="Öklid / Bramante" class="w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <section id="astronomers" class="slide bg-slate-800 relative">
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center w-full z-10">
+            <div class="reveal art-frame order-2 lg:order-1">
+                <!-- Raphael, Zoroaster, Ptolemy Close-up -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Sanzio_01_Raphael.jpg" 
+                     alt="Batlamyus, Zerdüşt ve Raffaello" class="w-full h-auto">
+            </div>
+            <div class="reveal delay-200 order-1 lg:order-2">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-amber-400">Gökler, Yeryüzü ve Sanatçı</h2>
+                <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+                    <p>Tablonun en sağ kenarında, evreni ve yeryüzünü temsil eden iki bilim insanı ile tablonun yaratıcısı buluşur.</p>
+                    
+                    <div class="bg-slate-700/50 p-6 rounded-lg mb-4 shadow-inner border border-slate-600">
+                        <h4 class="text-xl text-white font-semibold mb-2">Batlamyus (Ptolemy) ve Zerdüşt (Zoroaster)</h4>
+                        <p class="text-sm">Arkası dönük, altın renkli taç takan ve elinde <strong class="text-amber-400">Dünya Küresi</strong> tutan figür, antik çağın en büyük coğrafyacısı ve astronomu Batlamyus'tur. Onun karşısında duran, beyaz sakallı ve elinde <strong class="text-blue-300">Gökyüzü Küresi</strong> (yıldızlar) tutan kişi ise yıldız falcılığının ve astronominin kurucusu kabul edilen İranlı peygamber Zerdüşt'tür.</p>
+                    </div>
+
+                    <div class="bg-amber-900/20 border border-amber-500/30 p-6 rounded-lg shadow-xl">
+                        <h4 class="text-xl text-white font-semibold mb-2">Raffaello'nun Otoportresi</h4>
+                        <p class="text-sm">En sağda, siyah bir bere takan ve <strong class="text-amber-400">doğrudan bize (izleyiciye) bakan</strong> genç adam Raffaello'nun ta kendisidir! Yanında beyaz giysiler içinde duran kişi ise ressam arkadaşı <i>Il Sodoma'dır</i> (veya Protogenes).</p>
+                        <p class="text-sm mt-2 italic text-gray-400">Raffaello'nun kendini bu devasa dehalar arasına yerleştirmesi, Rönesans döneminde ressamların artık sadece "zanaatkar" değil, filozoflarla eşdeğer "entelektüeller" olarak görülmeye başlandığının en büyük ilanıdır.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        
+                        const currentId = entry.target.getAttribute('id');
+                        dots.forEach(dot => {
+                            dot.classList.remove('active');
+                            if (dot.getAttribute('href') === `#${currentId}`) {
+                                dot.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            slides.forEach(slide => {
+                observer.observe(slide);
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
